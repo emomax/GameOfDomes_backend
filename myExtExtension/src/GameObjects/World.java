@@ -29,7 +29,6 @@ public class World {
     public Transform movePlayer(User u, Transform t) {
         // TODO this must be implemented!
         
-        
         return t;        
     }
     
@@ -39,5 +38,22 @@ public class World {
         this.extension = _extension;
         // Set the seed to insure total randomness
         rand.setSeed((new Date()).getTime());
+    }
+    
+    public void processShot(User fromUser) {
+        /*
+        GameObject player = getPlayer(fromUser);
+        
+        if (player.isDead()) {
+            return;
+        } 
+        if (!palyer.getWeapon().isReadyToFire()) {
+            return;
+        }*/
+        
+        System.out.println("Shot was fired!");
+        
+        //player.getWeapon().shoot();
+        
     }
 }

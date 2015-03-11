@@ -1,17 +1,18 @@
 package myExtPackage;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import com.smartfoxserver.v2.entities.User;
 import com.smartfoxserver.v2.entities.data.ISFSObject;
 import com.smartfoxserver.v2.entities.data.SFSObject;
 import com.smartfoxserver.v2.extensions.BaseClientRequestHandler;
+import com.smartfoxserver.v2.entities.Room;
 
 // Custom class imports
-
 import DomeUtils.Transform;
 import GameObjects.World;
-import com.smartfoxserver.v2.entities.Room;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import DomeUtils.RoomHelper;
  
 //! This handler makes sure that the position and orientation of the main ship is broadcasted properly.
 public class SendTransformHandler extends BaseClientRequestHandler {
@@ -22,11 +23,7 @@ public class SendTransformHandler extends BaseClientRequestHandler {
         
         Transform receivedTransform = Transform.fromSFSObject(objIn);
         
-        /*
-        REPLACE new MainExtension() with real extension reference!
-        
-        */
-        World world = new World(new MainExtension());
+        World world = RoomHelper.getWorld(this);
         
         Transform resultTransform = world.movePlayer(user, receivedTransform);
         

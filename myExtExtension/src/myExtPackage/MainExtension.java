@@ -18,8 +18,12 @@ public class MainExtension extends SFSExtension {
     //! The init function adds the requesthandlers for our different broadcasted items.
     @Override
     public void init() {
+        // Used for handling all objects and their functions.
         world = new World(this);
         
         addRequestHandler("TransformShip", SendTransformHandler.class);
+        addRequestHandler("Fire", FireHandler.class);
     }
+    
+    public World getWorld() { return world; }
 }
