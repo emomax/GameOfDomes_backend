@@ -17,8 +17,6 @@ public class MainExtension extends SFSExtension {
         // Used for handling all objects and their functions.
         world = new World(this);
         
-        trace("\nMainExtension is initialized!\n");
-        
         addRequestHandler("RequestTransform", SendTransformHandler.class);
         addRequestHandler("Fire", FireHandler.class);
     }
