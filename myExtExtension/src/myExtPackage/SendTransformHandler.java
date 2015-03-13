@@ -32,7 +32,7 @@ public class SendTransformHandler extends BaseClientRequestHandler {
         int _thrust = objIn.getInt("thrust");
         trace("\nGot transform! rotX="+_rotX+", rotY="+_rotY+", thrust="+_thrust);
         
-        Transform transform = new Transform(0, 0, 0, _rotX * 0.02, _rotY * 0.02, 0);
+        Transform transform = new Transform(0, 0, 0, _rotX, _rotY, 0);
         
         //long timeStamp = objIn.getLong("t");
         
