@@ -41,9 +41,9 @@ public class Transform {
     public double getRoty() { return roty; }
     public double getRotz() { return rotz; }
     
-    public double getX() { return rotx; }
-    public double getY() { return roty; }
-    public double getZ() { return rotz; }
+    public double getX() { return x; }
+    public double getY() { return y; }
+    public double getZ() { return z; }
     
     //! Setting the current timestamp for interpolation or extrapolation
     public void setTimeStamp(long timeStamp) {
