@@ -85,6 +85,6 @@ public class Transform {
         
         transformData.putLong("TimeStamp", this.timeStamp);
         
-        data.putSFSObject("ShipTransform", transformData);
+        data.putSFSObject("transform", transformData);
     }
 }
