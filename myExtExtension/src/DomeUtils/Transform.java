@@ -74,17 +74,12 @@ public class Transform {
     
     //! Prepare this Transform object for broadcasting.
     public void toSFSObject(ISFSObject data) {
-        ISFSObject transformData = new SFSObject();
-        transformData.putDouble("x", x);
-        transformData.putDouble("y", y);
-        transformData.putDouble("z", z);
+        data.putDouble("x", x);
+        data.putDouble("y", y);
+        data.putDouble("z", z);
         
-        transformData.putDouble("rotX", rotx);
-        transformData.putDouble("rotY", roty);
-        transformData.putDouble("rotZ", rotz);
-        
-        transformData.putLong("TimeStamp", this.timeStamp);
-        
-        data.putSFSObject("transform", transformData);
+        data.putDouble("rotX", rotx);
+        data.putDouble("rotY", roty);
+        data.putDouble("rotZ", rotz);
     }
 }
