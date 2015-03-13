@@ -25,10 +25,12 @@ public class World {
     // Reference to the server extension
     private MainExtension extension;
     
+    private GameObject motherShip;
+    
     //! Used for moving given object
     public Transform movePlayer(User u, Transform t) {
-        // TODO this must be implemented!
         
+        t = motherShip.move(t);        
         return t;        
     }
     
@@ -38,6 +40,8 @@ public class World {
         this.extension = _extension;
         // Set the seed to insure total randomness
         rand.setSeed((new Date()).getTime());
+        // Init mothership
+        motherShip = new GameObject();
     }
     
     public void processShot(User fromUser) {

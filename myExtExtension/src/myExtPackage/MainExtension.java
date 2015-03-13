@@ -2,10 +2,6 @@ package myExtPackage;
 
 // SFS-items
 import com.smartfoxserver.v2.extensions.SFSExtension;
-import com.smartfoxserver.v2.entities.Room;
-import com.smartfoxserver.v2.entities.User;
-import com.smartfoxserver.v2.entities.data.ISFSObject;
-import com.smartfoxserver.v2.entities.data.SFSObject;
 
 // Custom classes
 import GameObjects.World;
@@ -21,7 +17,9 @@ public class MainExtension extends SFSExtension {
         // Used for handling all objects and their functions.
         world = new World(this);
         
-        addRequestHandler("TransformShip", SendTransformHandler.class);
+        trace("\nMainExtension is initialized!\n");
+        
+        addRequestHandler("RequestTransform", SendTransformHandler.class);
         addRequestHandler("Fire", FireHandler.class);
     }
     

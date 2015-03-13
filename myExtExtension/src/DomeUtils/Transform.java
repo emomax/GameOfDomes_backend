@@ -27,6 +27,15 @@ public class Transform {
         this.rotz = _rotz;
     }
     
+    public void add(Transform t) {
+        this.x += t.getX();
+        this.y += t.getY();
+        this.z += t.getZ();
+        this.rotx += t.getRotx();
+        this.roty += t.getRoty();
+        this.rotz += t.getRotz();
+    }
+    
     // getters of everything
     public double getRotx() { return rotx; }
     public double getRoty() { return roty; }
@@ -70,11 +79,11 @@ public class Transform {
         transformData.putDouble("y", y);
         transformData.putDouble("z", z);
         
-        transformData.putDouble("rx", rotx);
-        transformData.putDouble("ry", roty);
-        transformData.putDouble("rz", rotz);
+        transformData.putDouble("rotX", rotx);
+        transformData.putDouble("rotY", roty);
+        transformData.putDouble("rotZ", rotz);
         
-        transformData.putLong("t", this.timeStamp);
+        transformData.putLong("TimeStamp", this.timeStamp);
         
         data.putSFSObject("transform", transformData);
     }
