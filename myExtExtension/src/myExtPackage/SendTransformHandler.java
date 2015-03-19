@@ -70,7 +70,7 @@ public class SendTransformHandler extends BaseClientRequestHandler {
             trace("Room is NULL!");
         
         List<User> userList = UserHelper.getRecipientsList(currentRoom);
-        this.send("ShipTransform", data, userList, true); // Use UDP = true
+        this.send("ShipTransform", data, userList/*, true*/); // Currently using TCP.
     }
     
     //! Send rejected trnasform message to speicifed user
