@@ -14,7 +14,7 @@ public class UserHelper {
         if (exceptUser != null) {
             users.remove(exceptUser);
         }
-
+        
         return users;
     }
 

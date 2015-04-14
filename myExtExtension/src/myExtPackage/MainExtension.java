@@ -11,14 +11,23 @@ public class MainExtension extends SFSExtension {
 
     private World world;
     
+    public static boolean pilotSelected = false;
+    public static boolean gunnerSelected = false;
+    public static boolean engineerSelected = false;
+    
     //! The init function adds the requesthandlers for our different broadcasted items.
     @Override
     public void init() {
         // Used for handling all objects and their functions.
         world = new World(this);
         
-        addRequestHandler("RequestTransform", SendTransformHandler.class);
-        addRequestHandler("Fire", FireHandler.class);
+      //  addRequestHandler("RequestTransform", SendTransformHandler.class);
+      //  addRequestHandler("Fire", FireHandler.class);
+        addRequestHandler("GunnerControlEvent", GunnerControlHandler.class);
+        addRequestHandler("PilotControlEvent", PilotControlHandler.class);
+        addRequestHandler("PilotControlEvent", EngineerControlHandler.class);
+        addRequestHandler("PilotControlEvent", PilotControlHandler.class);
+        
     }
     
     public World getWorld() { return world; }
