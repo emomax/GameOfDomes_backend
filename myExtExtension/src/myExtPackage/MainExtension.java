@@ -23,10 +23,13 @@ public class MainExtension extends SFSExtension {
         
       //  addRequestHandler("RequestTransform", SendTransformHandler.class);
       //  addRequestHandler("Fire", FireHandler.class);
-        addRequestHandler("GunnerControlEvent", GunnerControlHandler.class);
-        addRequestHandler("PilotControlEvent", PilotControlHandler.class);
-        addRequestHandler("PilotControlEvent", EngineerControlHandler.class);
-        addRequestHandler("PilotControlEvent", PilotControlHandler.class);
+        
+        //add all request handlers
+        addRequestHandler("PilotControlEvent"   , PilotControlHandler.class);
+        addRequestHandler("GunnerControlEvent"  , GunnerControlHandler.class);
+        addRequestHandler("EngineerControlEvent", EngineerControlHandler.class);
+        addRequestHandler("ChooseClassHandler"  , ChooseClassHandler.class);
+        addRequestHandler("StartGameEvent"      , StartGameHandler.class);
         
     }
     

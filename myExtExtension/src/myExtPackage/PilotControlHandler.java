@@ -13,20 +13,24 @@ public class PilotControlHandler extends BaseClientRequestHandler{
     @Override
     public void handleClientRequest(User user, ISFSObject objIn) {
         
-        boolean inputUp = objIn.getBool("inputUp");
-        boolean inputDown = objIn.getBool("inputDown");
-        boolean inputLeft = objIn.getBool("inputLeft");
-        boolean inputRight = objIn.getBool("inputRight");
-        boolean inputForward = objIn.getBool("inputForward");
-        boolean inputBackward = objIn.getBool("inputBackward");
-        
+        //send data to clients
+        sendData(user, objIn.getBool("inputUp"), 
+                objIn.getBool("inputDown"), 
+                objIn.getBool("inputLeft"), 
+                objIn.getBool("inputRight"), 
+                objIn.getBool("inputForward"), 
+                objIn.getBool("inputBackward"));
     }
     
-    private void sendTransform(User fromUser, boolean _up, boolean _down,
+    private void sendData(User fromUser, boolean _up, boolean _down,
             boolean _left, boolean _right, boolean _forward, boolean _backward){
         
+        trace("Got variables and sending data from pilot");
+        
+        //create the outobject
         ISFSObject output = new SFSObject();
         
+        //include the input logic
         output.putBool("sgctUp", _up);
         output.putBool("sgctDown", _down);
         output.putBool("sgctLeft", _left);
@@ -34,17 +38,19 @@ public class PilotControlHandler extends BaseClientRequestHandler{
         output.putBool("sgctForward", _forward);
         output.putBool("sgctBackward", _backward);
         
+        //get current room
         Room currentRoom = RoomHelper.getCurrentRoom(this);
         
+        //check that there is a room
         if (currentRoom != null)
             trace("Room is: " + currentRoom.getName());
         else 
             trace("Room is NULL!");
         
+        //get user list
         List<User> userList = UserHelper.getRecipientsList(currentRoom);
         
-        this.send("PilotEvent", output, userList); //replace fromUser with SGCTclient
-        
+        //send data to clients
+        this.send("PilotEvent", output, userList, false); //replace userList with SGCTclient
     }
-    
 }

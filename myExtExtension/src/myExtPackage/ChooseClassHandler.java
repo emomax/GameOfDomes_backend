@@ -16,18 +16,17 @@ public class ChooseClassHandler extends BaseClientRequestHandler {
         
         if(role == "Pilot"){
             MainExtension.pilotSelected = true;
+            trace("Pilot selected");
         }
         else if(role == "Gunner"){
             MainExtension.gunnerSelected = true;
+            trace("Gunner selected");
         }
         else if(role == "Engineer"){
             MainExtension.engineerSelected = true;
+            trace("Engineer selected");
         }
         else
             trace("No valid role selected");
-        
-        
     }
-    
-    
 }
