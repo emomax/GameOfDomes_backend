@@ -10,7 +10,8 @@ import GameObjects.World;
 public class MainExtension extends SFSExtension {
 
     private World world;
-
+    
+    public static boolean pilotSelected = false;
     
     //! The init function adds the requesthandlers for our different broadcasted items.
     @Override
