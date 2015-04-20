@@ -14,27 +14,23 @@ public class PilotControlHandler extends BaseClientRequestHandler{
     public void handleClientRequest(User user, ISFSObject objIn) {
         
         //send data to clients
-        sendData(user, objIn.getBool("inputUp"), 
-                objIn.getBool("inputDown"), 
-                objIn.getBool("inputLeft"), 
-                objIn.getBool("inputRight"), 
+        sendData(user, objIn.getDouble("inputRotY"), 
+                objIn.getDouble("inputRotX"),  
                 objIn.getBool("inputForward"), 
                 objIn.getBool("inputBackward"));
     }
     
-    private void sendData(User fromUser, boolean _up, boolean _down,
-            boolean _left, boolean _right, boolean _forward, boolean _backward){
+    private void sendData(User fromUser, double _rotY, double _rotX,
+           boolean _forward, boolean _backward){
         
-        trace("Got variables and sending data from pilot");
+        trace("Got variables and sending data from pilot: \n(" + _rotX + ", " + _rotY + ")");
         
         //create the outobject
         ISFSObject output = new SFSObject();
         
         //include the input logic
-        output.putBool("sgctUp", _up);
-        output.putBool("sgctDown", _down);
-        output.putBool("sgctLeft", _left);
-        output.putBool("sgctRight", _right);
+        output.putDouble("sgctRotX", _rotX);
+        output.putDouble("sgctRotY", _rotY);
         output.putBool("sgctForward", _forward);
         output.putBool("sgctBackward", _backward);
         
@@ -42,10 +38,10 @@ public class PilotControlHandler extends BaseClientRequestHandler{
         Room currentRoom = RoomHelper.getCurrentRoom(this);
         
         //check that there is a room
-        if (currentRoom != null)
+        /*if (currentRoom != null)
             trace("Room is: " + currentRoom.getName());
         else 
-            trace("Room is NULL!");
+            trace("Room is NULL!");*/
         
         //get user list
         List<User> userList = UserHelper.getRecipientsList(currentRoom);

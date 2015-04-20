@@ -14,37 +14,36 @@ public class GunnerControlHandler extends BaseClientRequestHandler{
     public void handleClientRequest(User user, ISFSObject objIn) {
         
         //send data to clients
-        sendData(user, objIn.getBool("inputUp"), 
-                objIn.getBool("inputDown"), 
-                objIn.getBool("inputLeft"), 
-                objIn.getBool("inputRight"), 
+        sendData(user, objIn.getDouble("inputRotY"), 
+                objIn.getDouble("inputRotX"),   
                 objIn.getBool("isFiring"));
     }
     
-    private void sendData(User fromUser, boolean _up, boolean _down,
-            boolean _left, boolean _right, boolean _isFiring) {
+    private void sendData(User fromUser, double _rotY, double _rotX, boolean _isFiring) {
         
-        trace("Got variables and sending data from gunner");
+        trace("Got variables and sending data from gunner: \n(" + _rotX + ", " + _rotY + ")");
         
         //create the out object
         ISFSObject output = new SFSObject();
         
         //include  the input  logic
-        output.putBool("sgctUp", _up);
-        output.putBool("sgctDown", _down);
-        output.putBool("sgctLeft", _left);
-        output.putBool("sgctRight", _right);
+        //output.putBool("sgctUp", _up);
+        //output.putBool("sgctDown", _down);
+        //output.putBool("sgctLeft", _left);
+        //output.putBool("sgctRight", _right);
+        output.putDouble("sgctRotY", _rotY);
+        output.putDouble("sgctRotX", _rotX);
         output.putBool("sgctFire", _isFiring);
         
         //get current room
         Room currentRoom = RoomHelper.getCurrentRoom(this);
         
         //check that there is a room
-        if (currentRoom != null)
+      /*  if (currentRoom != null)
             trace("Room is: " + currentRoom.getName());
         else 
             trace("Room is NULL!");
-        
+        */
         //get user list
         List<User> userList = UserHelper.getRecipientsList(currentRoom);
         
