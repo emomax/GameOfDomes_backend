@@ -13,11 +13,16 @@ public class PilotControlHandler extends BaseClientRequestHandler{
     @Override
     public void handleClientRequest(User user, ISFSObject objIn) {
         
-        //send data to clients
-        sendData(user, objIn.getDouble("inputRotY"), 
-                objIn.getDouble("inputRotX"),  
-                objIn.getBool("inputForward"), 
-                objIn.getBool("inputBackward"));
+        
+        // attempt to send data to clients. 
+        try {
+            sendData(user, objIn.getDouble("inputRotY"), 
+                    objIn.getDouble("inputRotX"),  
+                    objIn.getBool("inputForward"), 
+                    objIn.getBool("inputBackward"));
+        } catch (Exception e) {
+            trace("\nInvalid data received.. ignore sending it further.");
+        }
     }
     
     private void sendData(User fromUser, double _rotY, double _rotX,

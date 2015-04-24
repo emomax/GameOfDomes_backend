@@ -13,10 +13,14 @@ public class GunnerControlHandler extends BaseClientRequestHandler{
     @Override
     public void handleClientRequest(User user, ISFSObject objIn) {
         
-        //send data to clients
-        sendData(user, objIn.getDouble("inputRotY"), 
+        //attempt to send data to clients
+        try {
+            sendData(user, objIn.getDouble("inputRotY"), 
                 objIn.getDouble("inputRotX"),   
                 objIn.getBool("isFiring"));
+        } catch (Exception e) {
+            trace("Invalid data received.. ignoring sending it further.");
+        }
     }
     
     private void sendData(User fromUser, double _rotY, double _rotX, boolean _isFiring) {
@@ -27,10 +31,6 @@ public class GunnerControlHandler extends BaseClientRequestHandler{
         ISFSObject output = new SFSObject();
         
         //include  the input  logic
-        //output.putBool("sgctUp", _up);
-        //output.putBool("sgctDown", _down);
-        //output.putBool("sgctLeft", _left);
-        //output.putBool("sgctRight", _right);
         output.putDouble("sgctRotY", _rotY);
         output.putDouble("sgctRotX", _rotX);
         output.putBool("sgctFire", _isFiring);
