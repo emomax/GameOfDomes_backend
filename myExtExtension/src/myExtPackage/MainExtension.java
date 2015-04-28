@@ -30,6 +30,7 @@ public class MainExtension extends SFSExtension {
         addRequestHandler("EngineerControlEvent", EngineerControlHandler.class);
         addRequestHandler("ChooseClassHandler"  , ChooseClassHandler.class);
         addRequestHandler("StartGameEvent"      , StartGameHandler.class);
+        addRequestHandler("BenchMarking"        , BenchmarkingHandler.class);
         
     }
     
