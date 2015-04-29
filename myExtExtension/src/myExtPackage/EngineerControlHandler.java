@@ -15,12 +15,13 @@ public class EngineerControlHandler extends BaseClientRequestHandler {
     public void handleClientRequest(User user, ISFSObject objIn) {
 
         //send data to clients        
-        sendData(user, objIn.getFloat("shieldVal"), 
-                objIn.getFloat("turretVal"), 
-                objIn.getFloat("engineVal"));
+        sendData(user, 
+                objIn.getInt("inputShield"), 
+                objIn.getInt("inputTurret"), 
+                objIn.getInt("inputEngine"));
     }
      
-    private void sendData(User fromUser, float _shield, float _turret, float _engine){
+    private void sendData(User fromUser, int _shield, int _turret, int _engine){
 
         trace("Got variables and sending data from engineer");
         
@@ -28,9 +29,11 @@ public class EngineerControlHandler extends BaseClientRequestHandler {
         ISFSObject output = new SFSObject();
 
         //include variables
-        output.putFloat("sgctShield", _shield);
-        output.putFloat("sgctTurret", _turret);
-        output.putFloat("sgctEngine", _engine);
+        output.putInt("sgctShield", _shield);
+        output.putInt("sgctTurret", _turret);
+        output.putInt("sgctEngine", _engine);
+        
+        trace("Power variables are (" + _shield + ", " + _turret + ", " + _engine + ")");
 
         //get current room
         Room currentRoom = RoomHelper.getCurrentRoom(this);
