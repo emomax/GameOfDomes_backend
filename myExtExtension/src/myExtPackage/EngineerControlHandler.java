@@ -16,12 +16,12 @@ public class EngineerControlHandler extends BaseClientRequestHandler {
 
         //send data to clients        
         sendData(user, 
-                objIn.getInt("inputShield"), 
-                objIn.getInt("inputTurret"), 
-                objIn.getInt("inputEngine"));
+                objIn.getFloat("inputShield"), 
+                objIn.getFloat("inputTurret"), 
+                objIn.getFloat("inputEngine"));
     }
      
-    private void sendData(User fromUser, int _shield, int _turret, int _engine){
+    private void sendData(User fromUser, float _shield, float _turret, float _engine){
 
         trace("Got variables and sending data from engineer");
         
@@ -29,9 +29,9 @@ public class EngineerControlHandler extends BaseClientRequestHandler {
         ISFSObject output = new SFSObject();
 
         //include variables
-        output.putInt("sgctShield", _shield);
-        output.putInt("sgctTurret", _turret);
-        output.putInt("sgctEngine", _engine);
+        output.putFloat("sgctShield", _shield);
+        output.putFloat("sgctTurret", _turret);
+        output.putFloat("sgctEngine", _engine);
         
         trace("Power variables are (" + _shield + ", " + _turret + ", " + _engine + ")");
 
