@@ -20,6 +20,8 @@ public class ChooseClassHandler extends BaseClientRequestHandler {
     public void handleClientRequest(User user, ISFSObject objIn) {
         String role = objIn.getUtfString("selectedRole");
         
+        trace(user.getName() + " connected and wanted to choose role: " + role);
+        
         ISFSObject output = new SFSObject();
         
         // If the role is not taken, the 'confirmed' parameter
@@ -37,7 +39,12 @@ public class ChooseClassHandler extends BaseClientRequestHandler {
              
             // Notify all users.
             sendRoleUpdate();
-        }        
+            trace("Role was available. Setting " + user.getName() + " as " + role);
+        } 
+        else {
+            trace("Role " + role + " was already taken! Informing "+ user.getName() + " of this.");
+            
+        }
     }
     
     private void sendRoleUpdate() {
@@ -49,12 +56,6 @@ public class ChooseClassHandler extends BaseClientRequestHandler {
             output.putBool("GunnerTaken", MainExtension.gunnerSelected);
             output.putBool("EngineerTaken", MainExtension.engineerSelected);
             
-            //check that there is a room
-            if (currentRoom != null)
-                trace("Room is: " + currentRoom.getName());
-            else 
-                trace("Room is NULL!");
-
             //get user list
             List<User> userList = UserHelper.getRecipientsList(currentRoom);
 
