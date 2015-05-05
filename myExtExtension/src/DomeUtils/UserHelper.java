@@ -7,6 +7,11 @@ import java.util.List;
 
 //! Helper methods to easily get socket channel list to send response message to clients
 public class UserHelper {
+    
+    private static User engineer;
+    private static User pilot;
+    private static User gunner;
+    private static User viewer;
 
     //! Get all users except 'exceptUser' of given room
     public static List<User> getRecipientsList(Room room, User exceptUser) {
@@ -21,5 +26,21 @@ public class UserHelper {
     //! Get all user of a given room
     public static List<User> getRecipientsList(Room currentRoom) {
             return getRecipientsList(currentRoom, null);
+    }
+    
+    //! Chain a player to a specific role
+    public static void lockPlayerToRole(String role, User user) {
+        if (role.equals("Engineer"))
+            engineer = user;
+        
+        if (role.equals("Pilot"))
+            pilot = user;
+        
+        if (role.equals("Gunner"))
+            gunner = user;
+        
+        if (role.equals("DomeHandler"))
+            viewer = user;
+        
     }
 }

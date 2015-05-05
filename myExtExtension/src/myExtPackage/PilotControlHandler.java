@@ -18,15 +18,14 @@ public class PilotControlHandler extends BaseClientRequestHandler{
         try {
             sendData(user, objIn.getDouble("inputRotY"), 
                     objIn.getDouble("inputRotX"),  
-                    objIn.getBool("inputForward"), 
-                    objIn.getBool("inputBackward"));
+                    objIn.getBool("inputForward"));
         } catch (Exception e) {
             trace("\nInvalid data received.. ignore sending it further.");
         }
     }
     
     private void sendData(User fromUser, double _rotY, double _rotX,
-           boolean _forward, boolean _backward){
+           boolean _forward){
         
         trace("Got variables and sending data from pilot: \n(" + _rotX + ", " + _rotY + ")");
         
@@ -37,7 +36,6 @@ public class PilotControlHandler extends BaseClientRequestHandler{
         output.putDouble("sgctRotX", _rotX);
         output.putDouble("sgctRotY", _rotY);
         output.putBool("sgctForward", _forward);
-        output.putBool("sgctBackward", _backward);
         
         //get current room
         Room currentRoom = RoomHelper.getCurrentRoom(this);
