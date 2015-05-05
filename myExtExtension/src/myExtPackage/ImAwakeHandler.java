@@ -14,8 +14,9 @@ import com.smartfoxserver.v2.extensions.BaseClientRequestHandler;
  * @author Max
  * This is merely a void function used by the domehandler
  * to verify that it's still alive.
- */
-class ImAwakeHandler  extends BaseClientRequestHandler {
+ * 
+ */ 
+public class ImAwakeHandler  extends BaseClientRequestHandler {
     
       @Override
     public void handleClientRequest(User user, ISFSObject objIn) {
