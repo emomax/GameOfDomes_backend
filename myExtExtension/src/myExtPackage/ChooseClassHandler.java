@@ -1,12 +1,11 @@
 package myExtPackage;
 
-import DomeUtils.RoomHelper;
 import DomeUtils.UserHelper;
-import com.smartfoxserver.v2.entities.Room;
 import com.smartfoxserver.v2.entities.User;
 import com.smartfoxserver.v2.entities.data.ISFSObject;
 import com.smartfoxserver.v2.entities.data.SFSObject;
 import com.smartfoxserver.v2.extensions.BaseClientRequestHandler;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,11 +34,16 @@ public class ChooseClassHandler extends BaseClientRequestHandler {
         
         // if the role was available, chain the user to the appropriate role.
         if (roleAvailable) {
+            trace("Role was available. Setting " + user.getName() + " as " + role);
             UserHelper.lockPlayerToRole(role, user);
              
             // Notify all users.
-            sendRoleUpdate();
-            trace("Role was available. Setting " + user.getName() + " as " + role);
+            if (MainExtension.engineerSelected &&
+                MainExtension.pilotSelected &&
+                MainExtension.gunnerSelected) 
+                sendStartGame();
+            else    
+                sendRoleUpdate();
         } 
         else {
             trace("Role " + role + " was already taken! Informing "+ user.getName() + " of this.");
@@ -48,18 +52,29 @@ public class ChooseClassHandler extends BaseClientRequestHandler {
     }
     
     private void sendRoleUpdate() {
-            Room currentRoom = RoomHelper.getCurrentRoom(this);
+        ISFSObject output = new SFSObject();
 
-            ISFSObject output = new SFSObject();
-            
-            output.putBool("PilotTaken", MainExtension.pilotSelected);
-            output.putBool("GunnerTaken", MainExtension.gunnerSelected);
-            output.putBool("EngineerTaken", MainExtension.engineerSelected);
-            
-            //get user list
-            List<User> userList = UserHelper.getRecipientsList(currentRoom);
+        output.putBool("PilotTaken", MainExtension.pilotSelected);
+        output.putBool("GunnerTaken", MainExtension.gunnerSelected);
+        output.putBool("EngineerTaken", MainExtension.engineerSelected);
 
-            //send data to clients
-            this.send("RoleUpdate", output, userList, false); //replace userList with SGCTclient
+        //get user list
+        List<User> userList = new ArrayList(this.getParentExtension().getParentZone().getUserList());//UserHelper.getRecipientsList(currentRoom);
+
+
+        //send data to clients
+        this.send("RoleUpdate", output, userList, false);
+    }
+    
+    private void sendStartGame() {
+        ISFSObject output = new SFSObject();
+        
+        output.putBool("GameStarted", true);
+
+        //get user list
+        List<User> userList = new ArrayList(this.getParentExtension().getParentZone().getUserList());
+        
+        // send data to clients
+        this.send("GameEvent", output, userList, false);
     }
 }

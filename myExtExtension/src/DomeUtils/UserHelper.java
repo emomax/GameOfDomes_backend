@@ -4,6 +4,7 @@ import com.smartfoxserver.v2.entities.Room;
 import com.smartfoxserver.v2.entities.User;
 
 import java.util.List;
+import myExtPackage.MainExtension;
 
 //! Helper methods to easily get socket channel list to send response message to clients
 public class UserHelper {
@@ -23,7 +24,7 @@ public class UserHelper {
         return users;
     }
 
-    //! Get all user of a given room
+    //! DEPRECATED - Get all user of a given room
     public static List<User> getRecipientsList(Room currentRoom) {
             return getRecipientsList(currentRoom, null);
     }
@@ -43,4 +44,30 @@ public class UserHelper {
             viewer = user;
         
     }
+    
+    public static String freePlayerFromRole(String name) {
+        if (engineer != null) {
+            if (engineer.getName().equals(name)) {
+                engineer = null;
+                MainExtension.engineerSelected = false;
+                return (name + " released from engineer duty!");
+            }
+        }
+        if (gunner != null) {
+            if (gunner.getName().equals(name)) {
+                gunner = null;
+                MainExtension.gunnerSelected = false;
+                return (name + " released from gunner duty!");
+            }
+        }
+        if (pilot != null) {
+            if (pilot.getName().equals(name)) {
+                pilot = null;
+                MainExtension.pilotSelected = false;
+                return (name + " released from pilot duty!");
+            }
+        }
+        
+        return (name + " wasn't locked to any role.");
+    } 
 }

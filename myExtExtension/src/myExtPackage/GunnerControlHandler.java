@@ -1,11 +1,10 @@
 package myExtPackage;
-import DomeUtils.RoomHelper;
-import DomeUtils.UserHelper;
-import com.smartfoxserver.v2.entities.Room;
+
 import com.smartfoxserver.v2.entities.User;
 import com.smartfoxserver.v2.entities.data.ISFSObject;
 import com.smartfoxserver.v2.entities.data.SFSObject;
 import com.smartfoxserver.v2.extensions.BaseClientRequestHandler;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GunnerControlHandler extends BaseClientRequestHandler{
@@ -35,17 +34,8 @@ public class GunnerControlHandler extends BaseClientRequestHandler{
         output.putDouble("sgctRotX", _rotX);
         output.putBool("sgctFire", _isFiring);
         
-        //get current room
-        Room currentRoom = RoomHelper.getCurrentRoom(this);
-        
-        //check that there is a room
-      /*  if (currentRoom != null)
-            trace("Room is: " + currentRoom.getName());
-        else 
-            trace("Room is NULL!");
-        */
-        //get user list
-        List<User> userList = UserHelper.getRecipientsList(currentRoom);
+        // get all users connected.
+        List<User> userList = new ArrayList(this.getParentExtension().getParentZone().getUserList());
         
         //send data to clients
         this.send("GunnerEvent", output, userList, false); //replace userList with SGCTclient

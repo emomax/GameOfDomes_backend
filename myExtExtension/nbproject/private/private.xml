@@ -3,13 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Tobias/Desktop/TNM094%20-GIT/domeConnector_backend/myExtExtension/src/myExtPackage/MainExtension.java</file>
-            <file>file:/C:/Users/Tobias/Desktop/TNM094%20-GIT/domeConnector_backend/myExtExtension/src/GameObjects/World.java</file>
-            <file>file:/C:/Users/Tobias/Desktop/TNM094%20-GIT/domeConnector_backend/myExtExtension/src/DomeUtils/Transform.java</file>
-            <file>file:/C:/Users/Tobias/Desktop/TNM094%20-GIT/domeConnector_backend/myExtExtension/src/myExtPackage/SendTransformHandler.java</file>
-            <file>file:/C:/Users/Tobias/Desktop/TNM094%20-GIT/domeConnector_backend/myExtExtension/src/DomeUtils/UserHelper.java</file>
-            <file>file:/C:/Users/Tobias/Desktop/TNM094%20-GIT/domeConnector_backend/myExtExtension/src/myExtPackage/FireHandler.java</file>
-            <file>file:/C:/Users/Tobias/Desktop/TNM094%20-GIT/domeConnector_backend/myExtExtension/src/myExtPackage/StartGameHandler.java</file>
+            <file>file:/C:/Users/Max/Documents/Slicing/java/serverMagic/domeConnector_backend/myExtExtension/src/myExtPackage/PilotControlHandler.java</file>
+            <file>file:/C:/Users/Max/Documents/Slicing/java/serverMagic/domeConnector_backend/myExtExtension/src/myExtPackage/BenchmarkingHandler.java</file>
+            <file>file:/C:/Users/Max/Documents/Slicing/java/serverMagic/domeConnector_backend/myExtExtension/src/myExtPackage/MainExtension.java</file>
+            <file>file:/C:/Users/Max/Documents/Slicing/java/serverMagic/domeConnector_backend/myExtExtension/src/myExtPackage/GunnerControlHandler.java</file>
+            <file>file:/C:/Users/Max/Documents/Slicing/java/serverMagic/domeConnector_backend/myExtExtension/src/myExtPackage/ChooseClassHandler.java</file>
+            <file>file:/C:/Users/Max/Documents/Slicing/java/serverMagic/domeConnector_backend/myExtExtension/src/myExtPackage/ImAwakeHandler.java</file>
+            <file>file:/C:/Users/Max/Documents/Slicing/java/serverMagic/domeConnector_backend/myExtExtension/src/myExtPackage/StartGameHandler.java</file>
+            <file>file:/C:/Users/Max/Documents/Slicing/java/serverMagic/domeConnector_backend/myExtExtension/src/myExtPackage/DisconnectedPlayerHandler.java</file>
+            <file>file:/C:/Users/Max/Documents/Slicing/java/serverMagic/domeConnector_backend/myExtExtension/src/myExtPackage/EngineerControlHandler.java</file>
+            <file>file:/C:/Users/Max/Documents/Slicing/java/serverMagic/domeConnector_backend/myExtExtension/src/myExtPackage/SendTransformHandler.java</file>
+            <file>file:/C:/Users/Max/Documents/Slicing/java/serverMagic/domeConnector_backend/myExtExtension/src/DomeUtils/UserHelper.java</file>
+            <file>file:/C:/Users/Max/Documents/Slicing/java/serverMagic/domeConnector_backend/myExtExtension/src/myExtPackage/FireHandler.java</file>
         </group>
     </open-files>
 </project-private>

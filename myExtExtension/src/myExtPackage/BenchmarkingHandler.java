@@ -1,19 +1,15 @@
 package myExtPackage;
-import DomeUtils.RoomHelper;
-import DomeUtils.UserHelper;
-import com.smartfoxserver.v2.entities.Room;
+
 import com.smartfoxserver.v2.entities.User;
 import com.smartfoxserver.v2.entities.data.ISFSObject;
 import com.smartfoxserver.v2.entities.data.SFSObject;
 import com.smartfoxserver.v2.extensions.BaseClientRequestHandler;
-import java.util.List;
 
 /**
  *
  * @author Max
  */
 public class BenchmarkingHandler  extends BaseClientRequestHandler{
-    
         
     @Override
     public void handleClientRequest(User user, ISFSObject objIn) {

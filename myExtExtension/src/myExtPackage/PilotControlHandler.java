@@ -1,18 +1,15 @@
 package myExtPackage;
-import DomeUtils.RoomHelper;
-import DomeUtils.UserHelper;
-import com.smartfoxserver.v2.entities.Room;
 import com.smartfoxserver.v2.entities.User;
 import com.smartfoxserver.v2.entities.data.ISFSObject;
 import com.smartfoxserver.v2.entities.data.SFSObject;
 import com.smartfoxserver.v2.extensions.BaseClientRequestHandler;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PilotControlHandler extends BaseClientRequestHandler{
     
     @Override
     public void handleClientRequest(User user, ISFSObject objIn) {
-        
         
         // attempt to send data to clients. 
         try {
@@ -37,17 +34,8 @@ public class PilotControlHandler extends BaseClientRequestHandler{
         output.putDouble("sgctRotY", _rotY);
         output.putBool("sgctForward", _forward);
         
-        //get current room
-        Room currentRoom = RoomHelper.getCurrentRoom(this);
-        
-        //check that there is a room
-        /*if (currentRoom != null)
-            trace("Room is: " + currentRoom.getName());
-        else 
-            trace("Room is NULL!");*/
-        
         //get user list
-        List<User> userList = UserHelper.getRecipientsList(currentRoom);
+        List<User> userList = new ArrayList(this.getParentExtension().getParentZone().getUserList());
         
         //send data to clients
         this.send("PilotEvent", output, userList, false); //replace userList with SGCTclient

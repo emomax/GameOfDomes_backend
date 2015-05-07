@@ -1,12 +1,10 @@
 package myExtPackage;
 
-import DomeUtils.RoomHelper;
-import DomeUtils.UserHelper;
-import com.smartfoxserver.v2.entities.Room;
 import com.smartfoxserver.v2.entities.User;
 import com.smartfoxserver.v2.entities.data.ISFSObject;
 import com.smartfoxserver.v2.entities.data.SFSObject;
 import com.smartfoxserver.v2.extensions.BaseClientRequestHandler;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EngineerControlHandler extends BaseClientRequestHandler {
@@ -35,17 +33,8 @@ public class EngineerControlHandler extends BaseClientRequestHandler {
         
         trace("Power variables are (" + _shield + ", " + _turret + ", " + _engine + ")");
 
-        //get current room
-        Room currentRoom = RoomHelper.getCurrentRoom(this);
-
-        //check that room isn't null
-        if (currentRoom != null)
-            trace("Room is: " + currentRoom.getName());
-        else 
-            trace("Room is NULL!");
-
         //get user list
-        List<User> userList = UserHelper.getRecipientsList(currentRoom);
+        List<User> userList = new ArrayList(this.getParentExtension().getParentZone().getUserList());
 
         //send data to  clients
         this.send("EngineerEvent", output, userList, false); //replace fromUser with SGCTclient
