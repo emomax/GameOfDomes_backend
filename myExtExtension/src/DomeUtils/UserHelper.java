@@ -31,6 +31,8 @@ public class UserHelper {
     
     //! Chain a player to a specific role
     public static void lockPlayerToRole(String role, User user) {
+        freePlayerFromRole(user.getName());
+        
         if (role.equals("Engineer"))
             engineer = user;
         
@@ -45,6 +47,7 @@ public class UserHelper {
         
     }
     
+    //! Unchain player from possible role
     public static String freePlayerFromRole(String name) {
         if (engineer != null) {
             if (engineer.getName().equals(name)) {

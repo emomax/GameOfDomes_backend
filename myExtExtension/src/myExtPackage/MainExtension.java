@@ -29,6 +29,7 @@ public class MainExtension extends SFSExtension {
         addRequestHandler("GunnerControlEvent"  , GunnerControlHandler.class);
         addRequestHandler("EngineerControlEvent", EngineerControlHandler.class);
         addRequestHandler("ChooseClassHandler"  , ChooseClassHandler.class);
+        addRequestHandler("StartGame"           , StartGameHandler.class);
         addRequestHandler("BenchMarking"        , BenchmarkingHandler.class);
         addRequestHandler("ImAwake"             , ImAwakeHandler.class);
         
