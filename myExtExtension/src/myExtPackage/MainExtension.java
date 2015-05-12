@@ -33,7 +33,7 @@ public class MainExtension extends SFSExtension {
         addRequestHandler("ImAwake"             , ImAwakeHandler.class);
         
         addEventHandler(SFSEventType.USER_DISCONNECT, DisconnectedPlayerHandler.class);
-        
+        addEventHandler(SFSEventType.USER_JOIN_ZONE, PlayerLoginHandler.class);
     }
     
     public static boolean setRole(String role) {
